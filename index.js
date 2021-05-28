@@ -4,7 +4,7 @@ const app = express()
 const Sample = require('./models/Sample')
 app.use(express.json())
 
-mongoose.connect("mongodb://localhost:27017/kavlum",{
+mongoose.connect(process.env.DATABASE,{
     useNewUrlParser:true,
     useFindAndModify:true,
     useUnifiedTopology:true,
@@ -15,7 +15,7 @@ mongoose.connect("mongodb://localhost:27017/kavlum",{
 
 app.get("/",(req,res) =>{
 
-     res.send("Its working this is me final work you")
+     res.send("Hurrye")
 })
 app.get("/getData",(req,res) =>{
 
