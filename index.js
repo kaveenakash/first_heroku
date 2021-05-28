@@ -1,7 +1,7 @@
 const express = require('express') 
 const mongoose = require('mongoose') 
 const app = express()
-
+const Sample = require('./models/Sample')
 app.use(express())
 
 mongoose.connect("mongodb://localhost:27017/kavlum",{
@@ -15,13 +15,37 @@ mongoose.connect("mongodb://localhost:27017/kavlum",{
 
 app.get("/",(req,res) =>{
 
-     res.send("Its working this is me")
+     res.send("Its working this is me final work")
+})
+app.get("/getData",(req,res) =>{
+
+    Sample.find({},(err,data) =>{
+        if(err){
+            return res.status(400).json({
+                error:`Error Occured`
+            })
+        }
+        return res.status(200).json({
+            data:data
+        })
+    })
 })
 
 
-app.get("/data",(req,res) =>{
+app.get("/sendData",(req,res) =>{
 
-     res.send("Next api you got it")
+    const {name,age} = req.body
+    let newSample = new Sample({name,age})
+    newSample.save((err,data) =>{
+        if(err){
+            return res.status(400).json({
+                err
+            })
+        }
+        return res.status(200).json({
+            data:data
+        })
+    })
 })
 
 
