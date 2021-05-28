@@ -15,7 +15,7 @@ mongoose.connect("mongodb://localhost:27017/kavlum",{
 
 app.get("/",(req,res) =>{
 
-     res.send("Its working this is me final work")
+     res.send("Its working this is me final work you")
 })
 app.get("/getData",(req,res) =>{
 
@@ -32,7 +32,7 @@ app.get("/getData",(req,res) =>{
 })
 
 
-app.get("/sendData",(req,res) =>{
+app.post("/sendData",(req,res) =>{
 
     const {name,age} = req.body
     let newSample = new Sample({name,age})
