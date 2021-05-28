@@ -2,7 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose') 
 const app = express()
 const Sample = require('./models/Sample')
-app.use(express())
+app.use(express.json())
 
 mongoose.connect("mongodb://localhost:27017/kavlum",{
     useNewUrlParser:true,
